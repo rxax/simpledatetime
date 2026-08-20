@@ -1,3 +1,9 @@
+# Simple Date Time 
+
+This project aims to simplify DateTime conversions and provide some basic utility tools for Java.
+
+Bellow is a short overview of what is currently available in the Java ecosystem.
+
 # Java Date/Time was naïve
 
 why is java date time such a mess?
