@@ -1,8 +1,10 @@
-package datetime.tools;
+package com.datetime.simple;
 
+import com.datetime.simple.DateTimeConverter;
 import org.junit.jupiter.api.Test;
 
 import java.time.*;
+import java.time.temporal.UnsupportedTemporalTypeException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -303,7 +305,7 @@ class DateTimeConverterTest {
 
         assertThrows(
                 UnsupportedTemporalTypeException.class,
-                () -> DateTimeConverter.convert(
+                () -> DateTimeConverter .convert(
                         Instant.now(),
                         Duration.class
                 )

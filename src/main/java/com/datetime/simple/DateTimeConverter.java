@@ -1,5 +1,3 @@
-package datetime.tools;
-
 /**
  * Here’s a practical Java 17+ implementation supporting the common java.time types:
  *
@@ -16,13 +14,14 @@ package datetime.tools;
  *
  * It also handles timezone/offset conversion and provides a test class.
  */
+package com.datetime.simple;
 
 import java.time.*;
 import java.time.temporal.Temporal;
 import java.time.temporal.TemporalAccessor;
 import java.time.temporal.UnsupportedTemporalTypeException;
 
-public final class DateTimeConverter {
+public class DateTimeConverter {
 
     private DateTimeConverter() {
         // Utility class
@@ -132,7 +131,7 @@ public final class DateTimeConverter {
         /*
          * MonthDay
          */
-        if (targetType == MonthDay.class) {
+        if (targetType.equals(MonthDay.class)) {
             return targetType.cast(
                     MonthDay.from(toZonedDateTime(value, zone))
             );
