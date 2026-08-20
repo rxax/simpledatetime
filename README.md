@@ -1,4 +1,4 @@
-# Java Date/Time Ambiguousity
+# Java Date/Time was naïve
 
 why is java date time such a mess?
 Because Java has not one date/time API, but several generations of them stacked on top of each other.
