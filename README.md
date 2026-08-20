@@ -190,7 +190,7 @@ Today I wouldn't replace `java.time` wholesale. I'd use a library that makes the
 ### My ranking
 
 | Library | Why |
-|---|---|---|
+|---|---|
 | **ThreeTen-Extra** | Best companion to `java.time` |
 | **Time4J** |  Powerful alternative if you really want a richer abstraction |
 | **Joda-Time** | Excellent historically, but essentially legacy for Java 8+ |
