@@ -53,6 +53,11 @@ public class DateTime {
                 .withZoneSameInstant(timezone);
     }
 
+    @SuppressWarnings("unused")
+    public ZonedDateTime getZonedDateTime(){
+        return dateTime;
+    }
+
     @Override
     public String toString(){
         return dateTime.format(DateTimeFormatter.ISO_DATE_TIME);
