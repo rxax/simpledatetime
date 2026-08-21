@@ -1,31 +1,56 @@
 package com.datetime.simple;
 
-import java.time.OffsetDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class DateTime {
 
     /**
-     * This Class uses OffsetDateTime for obvious reasons
+     * This Class uses ZonedDateTime for obvious reasons
      * Class complies with ISO 8601: YYYY-MM-DDThh:mm:ss±hh:mm
      * Example: 2026-08-21T08:05:27Z
      * The key difference is whether the timestamp carries its UTC offset.
      */
 
-    private final OffsetDateTime dateTime;
+    private ZonedDateTime dateTime;
 
-    public DateTime(java.util.Date date){
-        // Convert java.util.Date to OffsetDateTime
-        dateTime = date.toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toOffsetDateTime();
+    public DateTime(Date date){
+        dateTime = date.toInstant().atZone(ZoneId.systemDefault());
+    }
+
+    public DateTime(Date date, ZoneId timezone){
+        dateTime = date.toInstant().atZone(timezone);
     }
 
     public DateTime(java.sql.Date sqlDate){
         dateTime = sqlDate.toLocalDate()
-                .atStartOfDay(ZoneId.systemDefault())
-                .toOffsetDateTime();
+                .atStartOfDay(ZoneId.systemDefault());
+    }
+
+    public DateTime(java.sql.Date sqlDate, ZoneId timezone){
+        dateTime = sqlDate.toLocalDate()
+                .atStartOfDay(timezone);
+    }
+
+    @SuppressWarnings("unused")
+    public ZoneOffset getOffset(){
+        // returns the offset, example +03:00
+         return dateTime.getOffset();
+    }
+
+    @SuppressWarnings("unused")
+    public ZoneId getZoneId(){
+        // // returns the timezone, example Europe/Dublin
+        return dateTime.getZone();
+    }
+
+    @SuppressWarnings("unused")
+    public void changeTimezone(ZoneId timezone){
+        dateTime = dateTime
+                .withZoneSameInstant(timezone);
     }
 
     @Override
