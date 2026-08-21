@@ -29,4 +29,13 @@ public class TimeZones {
         }
 
     }
+
+    public static ZoneId findOrUTC(String timezone){
+        // find a timezone or use system default; swallows exception
+        try{
+            return find(timezone);
+        }catch(Exception e){
+            return ZoneId.of("UTC");
+        }
+    }
 }

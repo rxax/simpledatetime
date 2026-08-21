@@ -4,6 +4,22 @@ This project aims to simplify DateTime conversions and provide some basic utilit
 
 Bellow is a short overview of what is currently available in the Java ecosystem.
 
+# Example usages
+
+```text
+// having a legacy date
+Date d = new Date();
+System.out.println(d);
+
+// create a new datetime object
+DateTime dt = new DateTime(d);
+System.out.println(dt);
+        
+// change the timezone
+dt.changeTimezone(TimeZones.findOrUTC("Europe/Paris"));
+System.out.println(dt);
+```
+
 # Java Date/Time was naïve
 
 why is java date time such a mess?

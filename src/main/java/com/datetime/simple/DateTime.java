@@ -55,7 +55,7 @@ public class DateTime {
 
     @Override
     public String toString(){
-        return dateTime.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        return dateTime.format(DateTimeFormatter.ISO_DATE_TIME);
     }
 
 }

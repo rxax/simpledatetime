@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DateTimeTest {
 
+
     @Test
     void javaLegacyDate() {
         LocalDateTime localDateTime =
@@ -20,8 +21,28 @@ public class DateTimeTest {
 
         DateTime dt = new DateTime(date);
         //System.out.print(dt);
-        assertEquals("2026-10-02T10:04:00+03:00", ""+dt);
+        assertEquals("2026-10-02T10:04:00+03:00[Europe/Bucharest]", ""+dt);
 
 
+    }
+
+    @Test
+    void changeTimezoneTest(){
+        // Test timezone change
+        LocalDateTime localDateTime =
+                LocalDateTime.of(2026, 10, 2, 11, 4);
+
+        Date date = Date.from(
+                localDateTime.toInstant(ZoneOffset.ofHours(4))
+        );
+
+
+        DateTime dt = new DateTime(date, TimeZones.findOrUTC("Europe/Dublin"));
+        assertEquals("2026-10-02T08:04:00+01:00[Europe/Dublin]",dt.toString());
+        System.out.print(dt);
+
+        dt.changeTimezone(TimeZones.findOrUTC("Europe/Sofia"));
+        System.out.print(dt);
+        assertEquals("2026-10-02T10:04:00+03:00[Europe/Sofia]",dt.toString());
     }
 }
