@@ -2,7 +2,7 @@
 
 This project aims to simplify DateTime conversions and provide some basic utility tools for Java.
 
-Supports:  
+Supports conversion to ZonedDateTime from:  
 - JDK 1.0: java.util.Date
 - JDK 1.1: java.util.Calendar
 - Joda-Time 2.x: org.joda.time.DateTime
