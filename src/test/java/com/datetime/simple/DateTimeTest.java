@@ -39,10 +39,26 @@ public class DateTimeTest {
 
         DateTime dt = new DateTime(date, TimeZones.findOrUTC("Europe/Dublin"));
         assertEquals("2026-10-02T08:04:00+01:00[Europe/Dublin]",dt.toString());
-        System.out.print(dt);
+        //System.out.print(dt);
 
         dt.changeTimezone(TimeZones.findOrUTC("Europe/Sofia"));
-        System.out.print(dt);
+        //System.out.print(dt);
         assertEquals("2026-10-02T10:04:00+03:00[Europe/Sofia]",dt.toString());
+    }
+
+    @Test
+    void jodaDateTimeTest(){
+        /*
+         * Expect jodaDateTime to be the same as OffsetDateTime from ZonedDateTime
+         */
+        org.joda.time.DateTime yodaDateTime = new org.joda.time.DateTime();
+        //System.out.println(yodaDateTime);
+
+        var dt = new DateTime(yodaDateTime);
+        //System.out.println(dt);
+        //System.out.println(dt.getZonedDateTime().toOffsetDateTime());
+
+        assertEquals(yodaDateTime.toString(), dt.getZonedDateTime().toOffsetDateTime().toString());
+
     }
 }

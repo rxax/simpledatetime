@@ -2,6 +2,10 @@
 
 This project aims to simplify DateTime conversions and provide some basic utility tools for Java.
 
+Supports:  
+- JDK 1.0 Date
+- Joda-Time 2.x
+
 # Example usages
 
 ```text

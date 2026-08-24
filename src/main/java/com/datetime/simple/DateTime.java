@@ -35,6 +35,16 @@ public class DateTime {
                 .atStartOfDay(timezone);
     }
 
+    public DateTime(org.joda.time.DateTime yodaDateTime) {
+        /*
+         * Create a ZoneDateTime from joda.time 2.0
+         */
+        dateTime = ZonedDateTime.ofInstant(
+                java.time.Instant.ofEpochMilli(yodaDateTime.getMillis()),
+                java.time.ZoneId.of(yodaDateTime.getZone().getID())
+        );
+    }
+
     @SuppressWarnings("unused")
     public ZoneOffset getOffset(){
         // returns the offset, example +03:00
