@@ -3,7 +3,9 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -59,6 +61,21 @@ public class DateTimeTest {
         //System.out.println(dt.getZonedDateTime().toOffsetDateTime());
 
         assertEquals(yodaDateTime.toString(), dt.getZonedDateTime().toOffsetDateTime().toString());
+
+    }
+
+    @Test
+    void calendarTest(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeZone(TimeZone.getTimeZone("Europe/Dublin"));
+
+        String datetime = String.valueOf(calendar.toInstant().atZone(calendar.getTimeZone().toZoneId()));
+        //System.out.println(datetime);
+
+        DateTime dt = new DateTime(calendar);
+        //System.out.println(dt);
+
+        assertEquals(datetime, ""+dt);
 
     }
 }

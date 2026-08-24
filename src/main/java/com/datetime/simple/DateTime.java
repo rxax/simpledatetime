@@ -45,6 +45,10 @@ public class DateTime {
         );
     }
 
+    public DateTime(java.util.Calendar calendar){
+        dateTime = calendar.toInstant().atZone(calendar.getTimeZone().toZoneId());
+    }
+
     @SuppressWarnings("unused")
     public ZoneOffset getOffset(){
         // returns the offset, example +03:00
