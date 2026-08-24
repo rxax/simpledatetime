@@ -50,6 +50,14 @@ public class DateTime {
     }
 
     @SuppressWarnings("unused")
+    public ZonedDateTime clearTime(){
+        /*
+        Set the time at midnight, returns new ZonedDateTime
+         */
+        return dateTime.toLocalDate().atStartOfDay(dateTime.getZone());
+    }
+
+    @SuppressWarnings("unused")
     public ZoneOffset getOffset(){
         // returns the offset, example +03:00
          return dateTime.getOffset();
