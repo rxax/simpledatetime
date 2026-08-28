@@ -17,6 +17,52 @@ public class DateTime {
 
     private ZonedDateTime dateTime;
 
+    /**
+     * Create a datetime object, default timezone is set to UTC
+     * @param year
+     * @param month
+     * @param day
+     * @param hour
+     * @param minute
+     * @param second
+     */
+    public DateTime(int year,
+                    int month,
+                    int day,
+                    int hour,
+                    int minute,
+                    int second){
+        this(year, month, day, hour, minute, second, ZoneId.of("UTC"));
+    }
+    /**
+     * Create a datetime object using explicit values
+     * @param year
+     * @param month
+     * @param day
+     * @param hour
+     * @param minute
+     * @param second
+     * @param timeZone
+     */
+    public DateTime(int year,
+                    int month,
+                    int day,
+                    int hour,
+                    int minute,
+                    int second,
+                    ZoneId timeZone){
+        dateTime = ZonedDateTime.of(
+                year,
+                month,
+                day,
+                hour,
+                minute,
+                second,
+                0,
+                timeZone
+        );
+    }
+
     public DateTime(Date date){
         dateTime = date.toInstant().atZone(ZoneId.systemDefault());
     }
