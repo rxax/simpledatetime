@@ -6,7 +6,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-public class DateTime {
+public class DateTime implements Comparable<DateTime>{
 
     /**
      * This Class uses ZonedDateTime for obvious reasons
@@ -131,4 +131,31 @@ public class DateTime {
         return dateTime.format(DateTimeFormatter.ISO_DATE_TIME);
     }
 
+    @Override
+    public int compareTo(DateTime other) {
+        return this.dateTime.compareTo(other.dateTime);
+    }
+
+    /**
+     * Compare two DateTimes, check if they represent the same moment in time
+     * @param o   the reference object with which to compare.
+     * @return
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (!(o instanceof DateTime other)) {
+            return false;
+        }
+
+        return dateTime.isEqual(other.dateTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return dateTime.toInstant().hashCode();
+    }
 }
