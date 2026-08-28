@@ -2,6 +2,8 @@ package com.datetime.simple;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
+import java.util.Comparator;
+import java.util.List;
 
 
 public class DateTimeUtil {
@@ -79,5 +81,41 @@ public class DateTimeUtil {
 
         return "%d days, %d hours, %d minutes, %d seconds"
                 .formatted(days, hours, minutes, seconds);
+    }
+
+    /**
+     * Get the latest date from a list of DateTimes
+     */
+    public static DateTime getLatest(List<DateTime> dates){
+        return dates.stream()
+                .max(DateTime::compareTo)
+                .orElse(null);
+    }
+
+    /**
+     * Get the earliest date from a list of DateTimes
+     */
+    public static DateTime getEarliest(List<DateTime> dates){
+        return dates.stream()
+                .min(DateTime::compareTo)
+                .orElse(null);
+    }
+
+    public static List<DateTime> removeDuplicates(List<DateTime> dates){
+        return dates.stream()
+                .distinct()
+                .toList();
+    }
+
+    public static List<DateTime> sort(List<DateTime> dates){
+        return dates.stream()
+                .sorted()
+                .toList();
+    }
+
+    public static List<DateTime> sortDescending(List<DateTime> dates){
+        return dates.stream()
+                .sorted(Comparator.reverseOrder())
+                .toList();
     }
 }
